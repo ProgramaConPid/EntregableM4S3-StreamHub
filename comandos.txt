@@ -85,7 +85,91 @@ db.usuarios.insertMany([
         "duracion": 125
       }
     ]
-  }
+  },
+  {
+      "nombre": "Karla González",
+      "email": "karla@example.com",
+      "pais": "Argentina",
+      "generos_preferidos": [
+        "Documental",
+        "Ciencia ficción",
+        "Animación",
+        "Aventura"
+      ],
+      "historial_visualizacion": [
+        {
+          "titulo": "El señor de los Anillos",
+          "fecha": "2023-10-01",
+          "calificacion": 5,
+        },
+        {
+          "titulo": "Interestelar",
+          "fecha": "2023-08-07",
+          "calificacion": 4,
+        },
+        {
+          "titulo": "Coco",
+          "fecha": "2023-09-15",
+          "calificacion": 5,
+        }
+      ]
+    },
+    {
+      "nombre": "Lucas Martínez",
+      "email": "lucas.martinez@example.com",
+      "pais": "México",
+      "generos_preferidos": [
+        "Acción",
+        "Thriller",
+        "Ciencia ficción",
+        "Drama"
+      ],
+      "historial_visualizacion": [
+        {
+          "titulo": "Blade Runner 2049",
+          "fecha": "2024-11-20",
+          "calificacion": 5
+        },
+        {
+          "titulo": "John Wick 3",
+          "fecha": "2025-01-15",
+          "calificacion": 4
+        },
+        {
+          "titulo": "La llegada",
+          "fecha": "2025-06-02",
+          "calificacion": 5
+        }
+      ]
+    },
+    {
+      "nombre": "Sofía Rivas",
+      "email": "sofia.rivas@example.com",
+      "pais": "Chile",
+      "generos_preferidos": [
+        "Romance",
+        "Drama",
+        "Comedia",
+        "Documental"
+      ],
+      "historial_visualizacion": [
+        {
+          "titulo": "Orgullo y prejuicio",
+          "fecha": "2024-02-14",
+          "calificacion": 5
+        },
+        {
+          "titulo": "El diario de Noa",
+          "fecha": "2024-03-10",
+          "calificacion": 4
+        },
+        {
+          "titulo": "Nuestro planeta",
+          "fecha": "2025-07-01",
+          "calificacion": 5
+        }
+      ]
+    }
 ]);
 
 // Coleccion contenidos
