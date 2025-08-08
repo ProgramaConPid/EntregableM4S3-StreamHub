@@ -12,7 +12,7 @@ db.createCollection("listas");
 db.createCollection("interacciones");
 
 
-// Insercion de documentos	
+// INSERCION DE DOCUMENTOS	
 
 // Coleccion usuarios
 
@@ -252,7 +252,85 @@ db.contenidos.insertMany([
         calificacion: 5
       }
     ]
-  }
+  },
+  {
+      "tipo": "pelicula",
+      "titulo": "The Matrix",
+      "duracion": 136,
+      "anio_lanzamiento": 1999,
+      "generos": ["Ciencia ficción", "Acción"],
+      "reparto_principal": [
+        "Keanu Reeves",
+        "Laurence Fishburne",
+        "Carrie-Anne Moss"
+      ],
+      "valoraciones": [
+        {
+          "usuario": "neo_99",
+          "calificacion": 5
+        },
+        {
+          "usuario": "trinity_fan",
+          "calificacion": 4.7
+        },
+        {
+          "usuario": "morpheus_vision",
+          "calificacion": 4.9
+        }
+      ]
+    },
+    {
+      "tipo": "pelicula",
+      "titulo": "La La Land",
+      "duracion": 128,
+      "anio_lanzamiento": 2016,
+      "generos": ["Romance", "Drama", "Musical"],
+      "reparto_principal": [
+        "Emma Stone",
+        "Ryan Gosling",
+        "John Legend"
+      ],
+      "valoraciones": [
+        {
+          "usuario": "musica_lover",
+          "calificacion": 4.8
+        },
+        {
+          "usuario": "emmafan_23",
+          "calificacion": 5
+        },
+        {
+          "usuario": "cineclasico",
+          "calificacion": 4.6
+        }
+      ]
+    },
+    {
+      "tipo": "pelicula",
+      "titulo": "El laberinto del fauno",
+      "duracion": 118,
+      "anio_lanzamiento": 2006,
+      "generos": ["Fantasía", "Drama", "Guerra"],
+      "reparto_principal": [
+        "Ivana Baquero",
+        "Sergi López",
+        "Maribel Verdú"
+      ],
+      "valoraciones": [
+        {
+          "usuario": "guillermodeltoro",
+          "calificacion": 5
+        },
+        {
+          "usuario": "fantasyfan",
+          "calificacion": 4.7
+        },
+        {
+          "usuario": "historiasoscuras",
+          "calificacion": 4.9
+        }
+      ]
+    }
 ]);
 
 // Coleccion listas
@@ -329,4 +407,8 @@ db.interacciones.insertMany([
   }
 ]);
 
-// Consultas basicas
+// CONSULTAS BASICAS
+
+// Consultar todos los contenidos registrados
+
+db.contenidos.find();
