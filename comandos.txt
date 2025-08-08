@@ -412,3 +412,16 @@ db.interacciones.insertMany([
 // Consultar todos los contenidos registrados
 
 db.contenidos.find();
+
+// Consultar las peliculas que duran mas de 120 minutos $gt
+
+db.contenidos.find(
+  {
+    tipo: "pelicula",
+    duracion: { $gt: 120 },
+  },
+  {
+    titulo: 1,
+    _id: 0
+  }
+);
