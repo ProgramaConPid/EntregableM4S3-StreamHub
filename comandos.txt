@@ -169,7 +169,83 @@ db.usuarios.insertMany([
           "calificacion": 5
         }
       ]
-    }
+    },
+  {
+    nombre: "Laura Martínez",
+    email: "lauramartinez@gmail.com",
+    pais: "México",
+    generos_preferidos: ["Acción", "Ciencia ficción", "Suspenso", "Aventura"],
+    historial_visualizacion: [
+      {
+        titulo: "Avengers: Endgame",
+        fecha: "2025-01-12",
+        duracion: 181,
+      },
+      {
+        titulo: "Jurassic World",
+        fecha: "2024-09-05",
+        duracion: 124,
+      },
+      {
+        titulo: "Interstellar",
+        fecha: "2024-07-19",
+        duracion: 169,
+      },
+      {
+        titulo: "Guardianes de la Galaxia",
+        fecha: "2024-05-30",
+        duracion: 121,
+      },
+      {
+        titulo: "Mad Max: Fury Road",
+        fecha: "2024-03-22",
+        duracion: 120,
+      },
+      {
+        titulo: "The Batman",
+        fecha: "2024-01-15",
+        duracion: 176,
+      },
+    ],
+  },
+  {
+    nombre: "Carlos Ramírez",
+    email: "carlosramirez@gmail.com",
+    pais: "Argentina",
+    generos_preferidos: ["Comedia", "Drama", "Romance", "Animación"],
+    historial_visualizacion: [
+      {
+        titulo: "La La Land",
+        fecha: "2025-02-10",
+        duracion: 128,
+      },
+      {
+        titulo: "Toy Story 4",
+        fecha: "2024-12-20",
+        duracion: 100,
+      },
+      {
+        titulo: "El Gran Hotel Budapest",
+        fecha: "2024-11-14",
+        duracion: 99,
+      },
+      {
+        titulo: "Coco",
+        fecha: "2024-09-03",
+        duracion: 105,
+      },
+      {
+        titulo: "El Irlandés",
+        fecha: "2024-07-27",
+        duracion: 209,
+      },
+      {
+        titulo: "Forrest Gump",
+        fecha: "2024-05-08",
+        duracion: 142,
+      },
+    ],
+  }
 ]);
 
 // Coleccion contenidos
