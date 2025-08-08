@@ -1,0 +1,248 @@
+COMANDOS MONGODB - ENREGABLE M4S3
+
+// Creacion de la base de datos
+
+use("streamHub_DB");
+
+// Creacion de las colecciones
+
+db.createCollection("usuarios");
+db.createCollection("contenidos");
+db.createCollection("listas");
+db.createCollection("interacciones");
+
+
+// Insercion de documentos	
+
+// Coleccion usuarios
+
+db.usuarios.insertMany([
+  {
+    "nombre": "Pedro Lopez",
+    "email": "pedrolopez@gmail.com",
+    "pais": "Colombia",
+    "generos_preferidos": ["Terror", "Romance", "Comedia", "Drama"],
+    "historial_visualizacion": [
+      {
+        "titulo": "Matrix",
+        "fecha": "2025-03-23",
+        "duracion": 130
+      },
+      {
+        "titulo": "El Conjuro 2",
+        "fecha": "2024-08-16",
+        "duracion": 125
+      },
+      {
+        "titulo": "Titanic",
+        "fecha": "2024-04-10",
+        "duracion": 140
+      }
+    ]
+  },
+  {
+    "nombre": "Ramon Perez",
+    "email": "ramon123@gmail.com",
+    "pais": "Mexico",
+    "generos_preferidos": ["Accion", "Aventura", "Documental", "Suspenso"],
+    "historial_visualizacion": [
+      {
+        "titulo": "Iron Man",
+        "fecha": "2023-12-20",
+        "duracion": 110
+      },
+      {
+        "titulo": "Avatar",
+        "fecha": "2023-10-02",
+        "duracion": 135
+      },
+      {
+        "titulo": "No Respires",
+        "fecha": "2023-06-14",
+        "duracion": 120
+      }
+    ]
+  },
+  {
+    "nombre": "Mariana Quintana",
+    "email": "marilove@gmail.com",
+    "pais": "Ecuador",
+    "generos_preferidos": ["Terror", "Aventura", "Animacion", "Comedia"],
+    "historial_visualizacion": [
+      {
+        "titulo": "Son Como Niños",
+        "fecha": "2025-01-23",
+        "duracion": 115
+      },
+      {
+        "titulo": "Pixel",
+        "fecha": "2025-01-12",
+        "duracion": 105
+      },
+      {
+        "titulo": "El Titere",
+        "fecha": "2024-07-28",
+        "duracion": 125
+      }
+    ]
+  }
+]);
+
+// Coleccion contenidos
+
+db.contenidos.insertMany([
+  {
+    tipo: "serie",
+    titulo: "Breaking Bad",
+    duracion: {
+      temporadas: 5,
+      episodios: 62,
+      duracion_episodio: 45,
+    },
+    anio_lanzamiento: 2008,
+    generos: ["Drama", "Crimen", "Comedia negra"],
+    reparto_principal: ["Bryan Cranston", "Aaron Paul", "Anna Gunn"],
+    valoraciones: [
+      {
+        usuario: "pedro20",
+        calificacion: 5,
+      },
+      {
+        usuario: "diana04",
+        calificacion: 4,
+      },
+      {
+        usuario: "carlitospro",
+        calificacion: 3.5,
+      },
+    ],
+  },
+  {
+    tipo: "pelicula",
+    titulo: "Inception",
+    duracion: 148,
+    anio_lanzamiento: 2010,
+    generos: ["Ciencia ficción", "Acción", "Suspenso"],
+    reparto_principal: [
+      "Leonardo DiCaprio",
+      "Joseph Gordon-Levitt",
+      "Elliot Page",
+    ],
+    valoraciones: [
+      {
+        usuario: "juliop89",
+        calificacion: 5
+      },
+      {
+        usuario: "mafer_xx",
+        calificacion: 4.5
+      },
+      {
+        usuario: "cinefilo21",
+        calificacion: 4.8
+      }
+    ]
+  },
+  {
+    tipo: "serie",
+    titulo: "Stranger Things",
+    duracion: {
+      temporadas: 4,
+      episodios: 34,
+      duracion_episodio: 50
+    },
+    anio_lanzamiento: 2016,
+    generos: ["Ciencia ficción", "Suspenso", "Drama"],
+    reparto_principal: ["Millie Bobby Brown", "Finn Wolfhard", "David Harbour"],
+    valoraciones: [
+      {
+        usuario: "sofia98",
+        calificacion: 4.5
+      },
+      {
+        usuario: "gamermax",
+        calificacion: 4
+      },
+      {
+        usuario: "lore90",
+        calificacion: 5
+      }
+    ]
+  }
+]);
+
+// Coleccion listas
+
+db.listas.insertMany([
+  {
+    "usuario": "Thomas Sanchez",
+    "nombre_lista": "Mis favoritas de terror",
+    "fecha_creacion": new Date(),
+    "titulos": ["El Titere", "La Dama de Negro", "Siniestro"]
+  },
+  {
+    "usuario": "Carolina Rodriguez",
+    "nombre_lista": "titulos mas controversiales",
+    "fecha_creacion": new Date(),
+    "titulos": ["Irreversible", "Holocausto canibal", "Fenomenos"]
+  },
+  {
+    "usuario": "Pablo Alvarez",
+    "nombre_lista": "Mejores animaciones",
+    "fecha_creacion": new Date(),
+    "titulos": ["Buscando a Nemo", "Shrek", "Up"]
+  }
+]);
+
+db.listas.insertOne(
+  {
+    "usuario": "Ramiro Gonzales",
+    "nombre_lista": "Mis recomendadas de Adam Sandler",
+    "fecha_creacion": new Date(),
+    "titulos": ["Happy Gilmore", "No te metas con Zohan", "Golpe Bajo"]
+  }
+);
+
+
+// Coleccion interacciones
+
+db.interacciones.insertMany([
+  {
+    "contenido": "Breaking Bad",
+    "temporada": 2,
+    "episodio": 5,
+    "usuario": "Ana Lopez",
+    "tipo": "me_gusta",
+    "fecha": new Date()
+  },
+  {
+    "contendido": "No te metas con Zohan",
+    "usuario": "Danilo Pereira",
+    "tipo": "comentario",
+    "comentario": "Muy divertida, me rei mucho",
+    "fecha": new Date()
+  },
+  {
+    "contenido": "Stranger Things",
+    "temporada": 1,
+    "episodio": 3,
+    "tipo": "me_gusta",
+    "fecha": new Date()
+  },
+  {
+    "contenido": "Titanic",
+    "tipo": "comentario",
+    "comentario": "La vi con mis padres y lloramos, increible pelicula",
+    "fecha": new Date()
+  },
+  {
+    "contenido": "Stranger Things",
+    "temporada": 2,
+    "episodio": 1,
+    "tipo": "comentario",
+    "comentario": "Un poco flojo este episodio, nada interesante",
+    "fecha": new Date()
+  }
+]);
+
+// Consultas basicas
