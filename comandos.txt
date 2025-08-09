@@ -1,4 +1,4 @@
-COMANDOS MONGODB - ENREGABLE M4S3
+// COMANDOS MONGODB - ENREGABLE M4S3
 
 // Creacion de la base de datos
 
@@ -512,4 +512,114 @@ db.usuarios.find(
     nombre: 1,
     cantidad_peliculas: { $size: "$historial_visualizacion" }
   }
+);
+
+// Consultar las peliculas que tienen de genero Drama
+
+db.contenidos.find(
+  { generos: {$in: ["Drama"]} },
+  { titulo: 1, _id: 0 }
+);
+
+// Consular la lista de Thomas o Pablo
+
+db.listas.find({
+  $or: [
+    { usuario: "Thomas Sanchez" },
+    { usuario: "Pablo Alvarez" }
+  ]
+});
+
+// ACTUALIZACIONES Y ELIMINACIONES
+
+// updateOne() y updateMany()
+
+db.usuarios.updateOne(
+  {nombre: "Sofía Rivas"},
+  {$set: {pais: "Colombia"}}
+);
+
+db.contenidos.updateMany(
+  {
+    "valoraciones.usuario": { $in: ["juliop89", "emmafan_23"] }
+  },
+  {
+    $set: {
+      "valoraciones.$[user1].calificacion": 4.7,
+      "valoraciones.$[user2].calificacion": 4.9
+    }
+  },
+  {
+    arrayFilters: [
+      { "user1.usuario": "juliop89" },
+      { "user2.usuario": "emmafan_23" }
+    ]
+  }
+);
+
+// eliminaciones 
+
+db.listas.deleteOne(
+  { usuario: "Pablo Alvarez" }
 )
+
+db.listas.deleteMany(
+  { usuario: { $in: ["Thomas Sanchez", "Carolina Rodriguez"] } }
+);
+
+// INDICES
+
+db.usuarios.createIndex(
+  { "historial_visualizacion.titulo": 1 }
+)
+
+db.usuarios.createIndex(
+  { generos_preferidos: 1 }
+)
+
+db.usuarios.createIndex(
+  { pais: 1, generos_preferidos: 1 }
+)
+
+db.usuarios.getIndexes()
+
+// AGREGACIONES
+
+// Obtener el genero mas popular de los contenidos
+
+db.contenidos.aggregate([
+  { 
+    $unwind: "$generos"  
+  },
+  { 
+    $group: { 
+      _id: "$generos", 
+      total: { $sum: 1 }  
+    }
+  },
+  { 
+    $sort: { total: -1 }  
+  },
+  { 
+    $limit: 1 
+  }           
+]);
+
+// Obtener el promedio de duracion total de peliculas
+
+db.usuarios.aggregate([
+  { $unwind: "$historial_visualizacion" },
+  { $match: { "historial_visualizacion.duracion": { $exists: true } } },
+  {
+    $group: {
+      _id: null,
+      promedio_duracion: { $avg: "$historial_visualizacion.duracion" }
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      promedio_duracion: { $round: ["$promedio_duracion", 2] }
+    }
+  }
+]);
